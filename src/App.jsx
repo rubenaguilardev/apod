@@ -1,6 +1,10 @@
+import Header from "./sections/Header"
+
 const App = () => {
   return (
-    <div className="text-2xl">Hello</div>
+    <div className="min-h-screen overflow-x-hidden">
+      <Header />
+    </div>
   )
 }
 
