@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import './embla.css'
-import {
-  NextButton,
-  PrevButton,
-  usePrevNextButtons
-} from './EmblaCarouselArrowButtons'
 
 const TWEEN_FACTOR_BASE = 0.84
 
@@ -13,16 +8,15 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
 const EmblaCarousel = (props) => {
-  const { slides = [0, 1, 2, 3, 4], options = { loop: true } } = props
+  const { slides = [0, 1, 2, 3, 4], options = { loop: true }, onApiReady } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
 
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick
-  } = usePrevNextButtons(emblaApi)
+  useEffect(() => {
+    if (emblaApi && onApiReady) {
+      onApiReady(emblaApi)
+    }
+  }, [emblaApi, onApiReady])
 
   const setTweenFactor = useCallback((emblaApi) => {
     tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length
@@ -91,15 +85,6 @@ const EmblaCarousel = (props) => {
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="embla__controls">
-        <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
-
-       
       </div>
     </div>
   )
