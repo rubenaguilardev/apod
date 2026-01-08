@@ -6,7 +6,6 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
-import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 
 const TWEEN_FACTOR_BASE = 0.84
 
@@ -17,9 +16,6 @@ const EmblaCarousel = (props) => {
   const { slides = [0, 1, 2, 3, 4], options = { loop: true } } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
 
   const {
     prevBtnDisabled,
@@ -103,17 +99,7 @@ const EmblaCarousel = (props) => {
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
 
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
-            />
-          ))}
-        </div>
+       
       </div>
     </div>
   )
