@@ -1,4 +1,4 @@
-import EmblaCarousel from "./sections/EmblaCarousel"
+import EmblaCarousel from "./sections/Carousel/EmblaCarousel"
 import Header from "./sections/Header"
 
 const App = () => {

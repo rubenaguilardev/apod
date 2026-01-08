@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import './embla.css'
 import {
   NextButton,
   PrevButton,
@@ -13,7 +14,7 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
 const EmblaCarousel = (props) => {
-  const { slides, options } = props
+  const { slides = [0, 1, 2, 3, 4], options = { loop: true } } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
 
