@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import EmblaCarousel from "./sections/Carousel/EmblaCarousel"
 import Header from "./sections/Header"
+import Description from './sections/Description'
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
     <div className="min-h-screen overflow-x-hidden">
       <Header emblaApi={emblaApi}/>
       <EmblaCarousel slides={SLIDES} onApiReady={setEmblaApi}/>
+      <Description />
     </div>
   )
 }

@@ -4,6 +4,7 @@
 @theme {
   --color-background: #160809;
   --color-secondary: #7D2E32;
+  --color-muted: #e5e5e5;
 }
 
 @layer base {

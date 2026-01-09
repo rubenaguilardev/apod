@@ -20,7 +20,7 @@ const Header = ({ emblaApi }) => {
     }, [])
 
     return (
-        <div className="flex justify-center items-center py-10">
+        <div className="flex justify-center items-center py-8">
             <h2 className='orbitron uppercase text-5xl font-bold tracking-widest text-secondary'>
                 {title}
             </h2>
