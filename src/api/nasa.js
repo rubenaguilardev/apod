@@ -1,4 +1,4 @@
-const apiKey = import.meta.env.VITE_NASA_API_KEY
+const apiKey = 'DEMO_KEY'
 const baseUrl = 'https://api.nasa.gov/planetary/apod'
 
 export const fetchApod = async () => {
