@@ -14,6 +14,9 @@ const App = () => {
       <Header emblaApi={emblaApi}/>
       <EmblaCarousel slides={SLIDES} onApiReady={setEmblaApi}/>
       <Description />
+      <div className='flex justify-end p-6'>
+        <img src="/logo.png" alt="NASA logo" />
+      </div>
     </div>
   )
 }
