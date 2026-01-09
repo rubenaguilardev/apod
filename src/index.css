@@ -3,8 +3,11 @@
 
 @theme {
   --color-background: #160809;
+  --color-primary: #E02C27;
   --color-secondary: #7D2E32;
   --color-muted: #e5e5e5;
+  --color-border: #322424;
+  --color-surface: #290c0c;
 }
 
 @layer base {
@@ -17,5 +20,17 @@
   }
   .orbitron {
     font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 20%, transparent);
+    backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent), inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
   }
 }
