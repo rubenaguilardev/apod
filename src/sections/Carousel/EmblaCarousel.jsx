@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import './embla.css'
 
@@ -77,12 +77,12 @@ const EmblaCarousel = (props) => {
         <div className="embla__container">
           {slides.map((index) => (
             <div className="embla__slide" key={index}>
-              <div className='absolute inset-0 rounded-4xl bg-linear-to-br from-primary/70 via-transparent to-primary/10 blur-2xl animate-pulse'/>
+              <div className='absolute inset-0 rounded-4xl bg-linear-to-br from-primary/40 via-transparent to-primary/10 blur-2xl animate-pulse'/>
                 <div className='relative glass rounded-4xl p-2 glow-border'>
                   <img
                     className="embla__slide__img"
                     src={`https://picsum.photos/600/350?v=${index}`}
-                    alt="Your alt text"
+                    alt="NASA Astronomy Picture of the Day"
                   />
                 </div>
               
