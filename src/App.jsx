@@ -44,7 +44,20 @@ const App = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <Header emblaApi={emblaApi} currentApod={currentApod}/>
-      <EmblaCarousel slides={apodData} onApiReady={setEmblaApi}/>
+      <div className='relative'>
+        <EmblaCarousel slides={apodData} onApiReady={setEmblaApi}/>
+        {currentApod && (
+      <div className='absolute top-1/2 right-11 -translate-y-1/2 bg-black/20 backdrop-blur-sm px-3 py-6 rounded-lg flex flex-col items-center'>
+        {currentApod.date.split('-').reverse().join('·').split('').map((char, i) => (
+          <span key={i} className='orbitron text-2xl text-muted font-semibold py-1 px-6'>
+            {char}
+          </span>
+        ))}
+      </div>
+)}
+      
+      </div>
+      
       <Description data={currentApod}/>
       <div className='flex justify-end p-4 h-22 mt-5'>
         <img src="/logo.png" alt="NASA logo" />

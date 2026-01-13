@@ -10,7 +10,7 @@ const Header = ({ emblaApi, currentApod }) => {
                 {currentApod?.title || 'APOD Gallery'}
             </h2>
 
-            <div className='embla_buttons flex gap-4 absolute right-5'>
+            <div className='embla_buttons flex gap-4 absolute right-10'>
                 <PrevButton 
                     onClick={() => emblaApi.scrollPrev()}
                 />

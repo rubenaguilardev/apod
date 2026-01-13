@@ -53,10 +53,10 @@
   padding: 0;
   margin: 0;
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   z-index: 1;
-  border-radius: 1.8rem;
+  border-radius: .5rem;
   color: var(--color-secondary);
   display: flex;
   align-items: center;
@@ -68,5 +68,9 @@
 .embla__button__svg {
   width: 35%;
   height: 35%;
+}
+
+.embla__button.hover {
+  border: red;
 }
 
