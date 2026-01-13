@@ -1,4 +1,5 @@
 const apiKey = import.meta.env.VITE_NASA_API_KEY
+console.log('VITE_NASA_API_KEY present?', Boolean(apiKey), apiKey);
 const baseUrl = 'https://api.nasa.gov/planetary/apod'
 
 
