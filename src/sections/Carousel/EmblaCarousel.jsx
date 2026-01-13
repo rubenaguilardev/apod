@@ -71,22 +71,38 @@ const EmblaCarousel = (props) => {
       .on('slideFocus', tweenOpacity)
   }, [emblaApi, tweenOpacity])
 
-  return (
-    <div className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
-              <div className='absolute inset-0 rounded-4xl bg-linear-to-br from-primary/40 via-transparent to-primary/10 blur-2xl animate-pulse'/>
-                <div className='relative glass rounded-4xl p-2 glow-border'>
-                  <img
-                    className="embla__slide__img"
-                    src={`https://picsum.photos/600/350?v=${index}`}
-                    alt="NASA Astronomy Picture of the Day"
-                  />
+  if (!slides || slides.length === 0) {
+    return (
+      <div className="embla">
+        <div className="embla__viewport">
+          <div className="embla__container">
+            <div className="embla__slide">
+              <div className='relative glass rounded-4xl p-2 glow-border'>
+                <div className="embla__slide__img bg-gray-800 flex items-center justify-center">
+                  <span className="text-muted">Loading...</span>
                 </div>
-              
-             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+return (
+  <div className="embla">
+    <div className="embla__viewport" ref={emblaRef}>
+      <div className="embla__container">
+        {slides.map((apod, index) => (
+          <div className="embla__slide" key={apod.date || index}>
+            <div className='absolute inset-0 rounded-4xl bg-linear-to-br from-primary/40 via-transparent to-primary/10 blur-2xl animate-pulse'/>
+              <div className='relative glass rounded-4xl p-2 glow-border'>
+                <img
+                  className="embla__slide__img"
+                  src={apod.url}
+                  alt="NASA Astronomy Picture of the Day"
+                />
+                </div>
             </div>
           ))}
         </div>
