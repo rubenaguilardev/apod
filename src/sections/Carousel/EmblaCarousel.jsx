@@ -102,7 +102,7 @@ return (
                     <span className="text-muted">{apod.time}</span>
                   </div>
                 ) : (
-                  <img className="embla__slide__img" src={apod.hdurl?.endsWith('.tif') ? apod.url : (apod.hdurl || apod.url)}  alt={apod.title} />
+                  <img className="embla__slide__img" src={apod.hdurl?.endsWith('.tif') ? apod.url : apod.hdurl}  alt={apod.title} />
                 )}
                 </div>
             </div>
