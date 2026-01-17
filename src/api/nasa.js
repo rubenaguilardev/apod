@@ -4,7 +4,7 @@ const baseUrl = 'https://api.nasa.gov/planetary/apod'
 
 export const fetchApodRange = async (days) => {
 
-    const startDate = '2026-01-07'
+    const startDate = '2025-12-30'
     const endDate = '2026-01-13'
     const url = `${baseUrl}?api_key=${apiKey}&end_date=${endDate}&start_date=${startDate}`
     

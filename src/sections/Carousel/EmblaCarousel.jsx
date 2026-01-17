@@ -8,7 +8,7 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
 const EmblaCarousel = (props) => {
-  const { slides = [0, 1, 2, 3, 4], options = { loop: true }, onApiReady } = props
+  const { slides = [0, 1, 2, 3, 4], options = { loop: false }, onApiReady } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
 
@@ -78,7 +78,7 @@ const EmblaCarousel = (props) => {
           <div className="embla__container">
             <div className="embla__slide">
               <div className='relative glass rounded-4xl p-2 glow-border'>
-                <div className="embla__slide__img bg-gray-800 flex items-center justify-center">
+                <div className="embla__slide__img flex items-center justify-center">
                   <span className="text-muted">Loading...</span>
                 </div>
               </div>
@@ -97,11 +97,13 @@ return (
           <div className="embla__slide" key={apod.date || index}>
             <div className='absolute inset-0 rounded-4xl bg-linear-to-br from-primary/40 via-transparent to-primary/10 blur-2xl animate-pulse'/>
               <div className='relative glass rounded-4xl p-2 glow-border'>
-                <img
-                  className="embla__slide__img"
-                  src={apod.url}
-                  alt="NASA Astronomy Picture of the Day"
-                />
+                {apod.isPlaceholder ? (
+                  <div className="embla__slide__img bg-black/80 flex items-center justify-center">
+                    <span className="text-muted">{apod.time}</span>
+                  </div>
+                ) : (
+                  <img className="embla__slide__img" src={apod.hdurl?.endsWith('.tif') ? apod.url : (apod.hdurl || apod.url)}  alt={apod.title} />
+                )}
                 </div>
             </div>
           ))}

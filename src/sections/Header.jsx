@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { PrevButton, NextButton } from './Carousel/EmblaCarouselArrowButtons'
+import { usePrevNextButtons, PrevButton, NextButton } from './Carousel/EmblaCarouselArrowButtons'
 
 
 const Header = ({ emblaApi, currentApod }) => {
+
+    const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi)
 
     return (
         <div className="flex max-w-4xl h-40 justify-center items-center py-10 text-center mx-auto">
@@ -12,10 +14,12 @@ const Header = ({ emblaApi, currentApod }) => {
 
             <div className='embla_buttons flex gap-4 absolute right-10'>
                 <PrevButton 
-                    onClick={() => emblaApi.scrollPrev()}
+                    onClick={onPrevButtonClick}
+                    disabled={prevBtnDisabled}
                 />
                 <NextButton 
-                    onClick={() => emblaApi.scrollNext()}
+                    onClick={onNextButtonClick}
+                    disabled={nextBtnDisabled}
                 />
             </div>
         </div>

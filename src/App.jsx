@@ -16,6 +16,14 @@ const App = () => {
       try {
         const data = await fetchApodRange()
         setApodData(data)
+        const withPlaceholder = [...data, { 
+          date: '', 
+          title: '', 
+          url: '', 
+          explanation: '',
+          isPlaceholder: true 
+        }]
+        setApodData(withPlaceholder)
       } catch(err) {
         console.error(err)
       }
@@ -47,7 +55,7 @@ const App = () => {
       <div className='relative'>
         <EmblaCarousel slides={apodData} onApiReady={setEmblaApi}/>
         {currentApod && (
-          <div className='absolute top-1/2 right-11 -translate-y-1/2 bg-black/10 backdrop-blur-sm px-3 py-6 rounded-lg flex flex-col items-center'>
+          <div className='absolute top-1/2 right-11 -translate-y-1/2 glass backdrop-blur-sm px-3 py-6 rounded-lg flex flex-col items-center'>
             {currentApod.date.split('-').reverse().join('·').split('').map((char, i) => (
               <span key={i} className='orbitron text-2xl text-muted font-semibold py-1 px-6'>
                 {char}
@@ -58,7 +66,7 @@ const App = () => {
       </div>
       
       <Description data={currentApod}/>
-      <div className='flex justify-end p-4 h-22 mt-5'>
+      <div className='fixed bottom-5 right-5 w-60'>
         <img src="/logo.png" alt="NASA logo" />
       </div>
     </div>
